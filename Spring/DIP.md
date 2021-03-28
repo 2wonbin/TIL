@@ -37,3 +37,19 @@ OrderServiceImpl이 DiscountPolicy를 의존해야하지만 (추상; interface�
 현실은 DiscountPolicy도 의존하면서 (FixDiscountPolicy) RateDiscountPolicy를 의존하고 있다 (== 추상에 의존하면서 구체에도 의존)<br />
 => DIP 위반
 => DIP 위반의 결과. DiscountPolicy의 변경사항이 ordeServiceImpl의 코드를 바꾸는 결과를 도출.
+
+## 해결방안
+``` java
+public class OrderServiceImpl implements OrderService{
+    //강의노트 : 'final'로 생성된 경우 생성자를 통해서 할당이 되어야 한다.
+
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
+    // 추상화(인터페이스)에 의존하도록 but 이렇게 하면 실행이 안된다.(NullPointerException)
+    // 외부에서 의존성을 주입(연결)해 해결하도록 한다.
+
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+```
