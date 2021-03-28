@@ -23,7 +23,7 @@ public Order createOrder(Long memberId, String itemName, int itemPrice) {
    Order의 입장에선 자신은 discount 대한 결과는 알지도, 관여할 수 도 없다.<br />
    discount는 DiscountPolicy에서 모두 처리한다<br />
    Order는 오로지 리턴된 결과를 받아서 처리할 뿐.<br />
-
+## DIP를 위반하는 경우
 ```java
 public class OrderServiceImpl implements OrderService{
 
@@ -33,7 +33,6 @@ public class OrderServiceImpl implements OrderService{
  .....
  .....
  ```
-## DIP를 위반하는 경우
 OrderServiceImpl이 DiscountPolicy를 의존해야하지만 (추상; interface에 의존)<br />
 현실은 DiscountPolicy도 의존하면서 (FixDiscountPolicy) RateDiscountPolicy를 의존하고 있다 (== 추상에 의존하면서 구체에도 의존)<br />
 => DIP 위반
