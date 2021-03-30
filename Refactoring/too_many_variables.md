@@ -29,7 +29,7 @@ const inputArr = [major, password, name, id, phone];
   
   # 해결방안
   
-공통된 속성을 찾아서 묶어내도록(grouping; ex.배열) 노력한다.
+-> 공통된 속성을 찾아서 묶어내도록(grouping; ex.배열) 노력한다.
 ```javascript
 for(let i=0; i<this.all.length; ++i) {
   if((this.all[i] instanceof nexacro.Edit || 
@@ -51,6 +51,6 @@ for(let i=0; i<this.all.length; ++i) {
      }
  }
   ```
-  
-  예제의 경우 입력창의 자료형을 검사하여(**instance of**) 맞는 조건을 찾아내었다.<br/>
+  먼저 입력창들에 접근할 수 있는 방법을 찾다가 모든 오브젝트에 접근 가능한 all이라는 내장 속성을 찾아냈다. <br/>
+  이후 (예제의) 입력창들의 자료형을 검사하여(**instance of**) 각자의 알맞는 조건을 찾아내었다.<br/>
   특별한 경우가 아니면 id값을 알맞게 설정하거나, 다른 공통점을 찾아 값의 수가 늘어나도 알맞게 대응할 수 있도록 한다.
