@@ -45,7 +45,7 @@ Box<Apple> appleBox = new Box<Apple>();
 ```
 참조변수와 생성자에 대입한 타입이 일치해야한다.
 ```java
-Box<apple> appleBox = new Box<Grape>(); ///컴파일 오류
+Box<Apple> appleBox = new Box<Grape>(); ///컴파일 오류
 ```
 
 ## 상속의 경우
