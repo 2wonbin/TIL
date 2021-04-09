@@ -1,5 +1,5 @@
-# 동적 sql
-
+# 동적 SQL
+[참조출처](https://mybatis.org/mybatis-3/ko/dynamic-sql.html)
 - if
 - choose(when | otherwise)
 - trim, where, (set)
@@ -11,11 +11,11 @@
 
 ```xml
 <if test="searchKeyword != null and searchKeyword != ''">
-	 		${searchType} like '%' || #{searchKeyword} || '%'	<!-- ''없이 불러오는 ${식별자} -->
- 		</if>
- 		<if test="gender != null and gender != ''">
- 			and gender = #{gender}
- 		</if>
+	${searchType} like '%' || #{searchKeyword} || '%'	<!-- ''없이 불러오는 ${식별자} -->
+</if>
+<if test="gender != null and gender != ''">
+	and gender = #{gender}
+</if>
 ```
 
 **주의사항**
@@ -31,17 +31,17 @@
 
 ```xml
 <if test="salary != null and salary != '' ">
- 			<choose>
- 			<!-- <![CDATA[....]]> : CDATA 내부 ....은 xml파일 내부에서도 문자열로 처리 -->
- 				<when test="salaryCompare eq 'le'"><!--  기본 처리절 -->
- 					and salary <![CDATA[<=]]> #{salary}
- 				</when>
- 				<when test="salaryCompare eq 'ge'"><!--  기본 처리절 -->
- 					and salary <![CDATA[>=]]> #{salary}
- 				</when>
- 				<otherwise></otherwise> <!-- defalut 처리절 -->
- 			</choose>
- 		</if>
+	<choose>
+		<!-- <![CDATA[....]]> : CDATA 내부 ....은 xml파일 내부에서도 문자열로 처리 -->
+		<when test="salaryCompare eq 'le'"><!--  기본 처리절 -->
+			and salary <![CDATA[<=]]> #{salary}
+		</when>
+		<when test="salaryCompare eq 'ge'"><!--  기본 처리절 -->
+			and salary <![CDATA[>=]]> #{salary}
+		</when>
+		<otherwise></otherwise> <!-- defalut 처리절 -->
+	</choose>
+</if>
 ```
 
 **주의사항**
@@ -84,4 +84,4 @@ where가 원하는대로, 그러니까 and나 or을 그대로 인식한다면 tr
 </trim>
 ```
 
-### foreach
+## foreach
