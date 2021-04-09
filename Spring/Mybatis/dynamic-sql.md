@@ -2,7 +2,7 @@
 
 - if
 - choose(when | otherwise)
-- trim, where, set
+- trim, where, (set)
 - foreach
 
 ## if
@@ -50,3 +50,38 @@
 - else 구문이 따로 없어 조건마다 if태그를 생성해야 한다.
 
 ## trim, where, set
+
+### &lt;where>
+
+sql 구문의 where절에 위치하며, 아래의 규칙을 따른다.
+
+1. where절 몸통이 비어있다면, where 키워드 제거
+2. where 다음에 바로 and or가 온다면 제거
+
+```xml
+<where>
+    <if test="state != null">
+         state = #{state}
+    </if>
+    <if test="title != null">
+        AND title like #{title}
+    </if>
+    <if test="author != null and author.name != null">
+        AND author_name like #{author.name}
+    </if>
+  </where>
+```
+
+### trim
+
+where가 원하는대로, 그러니까 and나 or을 그대로 인식한다면 trim으로 요소를 정의할 수 있다.
+
+```xml
+<trim prefix="WHERE" prefixOverrides="AND |OR ">
+<!-- prefix로 선언한 where 내부 prefixOverrides의 value로 지정한 요소들을 삭제한다  -->
+<!-- 추가하고 싶으면 width="추가 요소" --/>
+  ...
+</trim>
+```
+
+### foreach
