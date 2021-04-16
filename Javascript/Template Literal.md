@@ -22,15 +22,16 @@ function after(word) {
 
 ## JSP, EL과 같이 사용할 경우 + etc
 
-```jsp
+```java
 function devSubmit(id){
 		$("#devFrm")
-		.attr("action", `${pageContext.request.contextPath}/demo/\${id}.do`)	// jsp에서 Teamplate literal은 '\'를 통한 escaping 처리
+		.attr("action", `${pageContext.request.contextPath}/demo/\${id}.do`)
+		// jsp에서 Teamplate literal은 '\'를 통한 escaping 처리
 		.submit();
 	}
 ```
 JSP의 EL 태그도 ${}을 사용하여 값을 불러오고, 자바스크립트 Template Literal도 그러하다.<br/>
-이 경우 '\' 키워드로 escaping 처리를 하여 다르게 인식하도록 하였다.
+이 경우 '\\' 키워드로 escaping 처리를 하여 jsp 내부에서 다르게 인식하도록 하였다.
 <br/>
 
-위의 마크다운 양식에서도 백틱을 쓰면 어떤 처리가 진행되는 걸 발견하였다. 마찬가지로 '\'를 붙여 사용하니 일반 문자처럼 인식하였다.
+위의 마크다운 양식에서도 백틱을 쓰면 어떤 처리가 진행되는 걸 발견하였다. 마찬가지로 '\\'를 붙여 사용하니 일반 문자처럼 인식하였다.
