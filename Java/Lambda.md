@@ -71,3 +71,25 @@ new Object() {
 Object obj = (a, b) -> a >b ?  a : b;
 int value = obj.max(3,5)  // 컴파일 에러, Object 클래스에는 max()가 없다. >> 함수형 인터페이스로 해결
 ```
+
+<hr />
+
+이해가 어려워 조금 더 풀어서 써본다. (21.04.18) <br/>
+[참조출처](https://www.youtube.com/watch?v=uyPz5ekIx)
+``` java
+public class LambdaExam1 {
+	public static void main(String[] args) {
+		
+		Function f = () -> System.out.println("람다식!"); // 인터페이스 타입의 객체 생성. 추상메소드 내부 요소 '->' 이후 기술
+		
+		f.test();   // 추상 메소드의 이름으로 호출
+		
+		
+	}
+	
+	@FunctionalInterface	// 단 하나의 추상 메소드를 가진 인터페이스에 붙는 Annotation
+	interface Function{
+		public void test();
+	}
+}
+```
