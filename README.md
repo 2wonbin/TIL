@@ -1,2 +1,3 @@
-# TIL ; Today I Learn
-시험삼아 적어봅니다.
+# TIL : Today I Learned 👨‍💻
+
+틀리더라도 직접 쓰기 ✍ (21.04.22)
