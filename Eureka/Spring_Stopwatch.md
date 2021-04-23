@@ -8,7 +8,7 @@
 ## org.springframework.util.StopWatch
 [참조](https://creamilk88.tistory.com/151) | [스프링문서](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/StopWatch.html)
 
-Spring이 제공하는 StopWatch 클래스에 start()와 stop() 메소드를 사용 <br/>
+Spring이 제공하는 StopWatch 클래스 내부 start()와 stop() 메소드를 사용 <br/>
 그 사이의 차이를 getTotalTimeMillis()로 구한다.
 
 ``` java
@@ -27,8 +27,9 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Aspect
 public class Stopwatch {
-	
-	@Pointcut("execution(* com.kh.spring.memo.controller..insertMemo(..))")   //insertMemo 메소드를 가르키는 pointcut 표현식 작성
+
+	//insertMemo 메소드를 가르키는 pointcut 표현식 작성
+	@Pointcut("execution(* com.kh.spring.memo.controller..insertMemo(..))")	
 	public void pointcut() {}
 
 	@Around("pointcut()")   //Around advice로 pointcut 실행
@@ -40,8 +41,8 @@ public class Stopwatch {
 		
 		stopwatch.stop();                         // 끝
 		log.info("소요시간: {}", stopwatch.getTotalTimeMillis() + "ms"); 
-    //INFO : com.kh.spring.common.aop.Stopwatch.aroundAdvice(Stopwatch.java:28) - 소요시간: 19ms 
-    // start()와 stop() 실행 사이 소요시간 getTotalTimeMillis로 리턴.
+      //INFO : com.kh.spring.common.aop.Stopwatch.aroundAdvice(Stopwatch.java:28) - 소요시간: 19ms 
+      // start()와 stop() 실행 사이 소요시간 getTotalTimeMillis로 리턴.
 
 		return obj;
 	}
