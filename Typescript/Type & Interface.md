@@ -60,5 +60,5 @@ type person{
  ### 정리
  객체 타입을 지정할 땐 **interface**를 사용하고, 그 외엔 **type**을 사용하여 타입을 규정한다.
 
- [참조 : 타입스크립트 type과 interface의 공통점과 차이점](https://yceffort.kr/2021/03/typescript-interface-vs-type)
+ [참조 : 타입스크립트 type과 interface의 공통점과 차이점](https://yceffort.kr/2021/03/typescript-interface-vs-type)   
  [참조 : 타입과 인터페이스의 차이점은 무엇인가요?](https://www.inflearn.com/questions/108559)
