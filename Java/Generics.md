@@ -1,3 +1,61 @@
+# 2차 정리(21.05.05)
+
+## 제네릭이란
+클래스 / 메소드에서 사용할 내부 데이터 타입을 **외부**에서 지정하는 것.
+
+## 제네릭 클래스
+클래스 선언에 **타입 매개변수**가 쓰일 때, 제네릭 클래스라고 한다.
+``` java
+class FruitBox<T>{....}
+
+class FruitBox<Apple>{      //외부의 타입이 내부 타입 매개변수로 대입, 실제로 변경되는 것은 아님 --> Type Eraser 참조
+
+    List<Apple> fruits = new ArrayList<>();
+
+    public void add(Apple fruit){
+        fruits.add(fruit);
+    }
+}
+
+FruitBox<Apple> appleBox = new FruitBox<>();    //외부에서 Apple타입의 인스턴스 생성
+```
+
+## 제네릭 사용 이유
+
+타입 체크를 강력하게 하여 런타임에서 발견될 에러를 **컴파일** 단계에서 검증하기 위함.
+--> 컴파일시 타입체크가 되기 때문
+--> 형변환을 따로 해줄 이유가 없다.
+
+## 제네릭 메소드
+
+``` java
+public <T> void add(T t){
+    ....
+    //타입 T의 유효범위는 블록 내부까지만
+}
+```
+### 제네릭 클래스와 제네릭 메소드의 중첩
+둘의 타입 매개 변수가 같다면(T) 제네릭 메소드의 타입 매개변수가 우선
+``` java
+class Name<T>{
+    public <T> void printClassName(T t){
+        System.out.println(t.getClass().getName());
+    }
+}
+
+public static void main(Stiring[] args){
+    Name<String> name = new Name<>();
+    Class.printClassName(1);        //java.lang.Integer
+    Class.printClassName(3.14)      //java.lang.Double
+}
+```
+
+
+
+<hr/>
+
+
+
 # 제네릭(Generics)
 다양한 타입의 객체를 다루는 메소드나 컬렉션 클래스에 컴파일 시 타입체크를 해주는 기능이다 <br/>
 --> 컴파일 시에 체크하기 때문에 객체의 '타입 안정성'을 높이고 형 변환의 번거로움 제거.<br/>
@@ -66,4 +124,5 @@ Box<Apple> appleBox = new FruitBox<Apple>();    // 다형성
 ```
 
 [출처](https://www.notion.so/4735e9a564e64bceb26a1e5d1c261a3d)
+
 
