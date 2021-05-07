@@ -51,5 +51,8 @@ console.log(rest) // {age: 30, height: 170}
 함수의 파라미터가 몇개가 올 지 명확한 상황이 아닐 경우 rest 파라미터 사용
 배열의 모든 요소를 인자로 넣고 싶을때 spread 사용
 
-[[참조링크 : 07. spread 와 rest 문법 ]](https://learnjs.vlpt.us/useful/07-spread-and-rest.html)
-[[참조링크 : 자바스크립트 Spread와 Rest 문법 차이점]](https://medium.com/@shlee1353/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-spread%EC%99%80-rest-%EB%AC%B8%EB%B2%95%EC%A0%95%EB%A6%AC-f42efa73d3db)
+<hr />
+
+[[참조링크 : 07. spread 와 rest 문법 ]](https://learnjs.vlpt.us/useful/07-spread-and-rest.html)   
+[[참조링크 : 자바스크립트 Spread와 Rest 문법 차이점]](https://medium.com/@shlee1353/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-spread%EC%99%80-rest-%EB%AC%B8%EB%B2%95%EC%A0%95%EB%A6%AC-f42efa73d3db)   
+[[구조분해할당 정리]](https://github.com/2wonbin/TIL/blob/main/Javascript/Destructuring%20Assignment.md)
