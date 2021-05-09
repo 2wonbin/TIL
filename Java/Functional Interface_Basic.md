@@ -42,15 +42,15 @@ Function <String, Integer> function = str -> str.length;
 function.apply("Hello World");  //11
 ```
 
-### Predicate<T>
-객체 T를 매개변수로 받은 후 결과값으로 Boolean 리턴
-``` java
-@FunctionalInterface
-public interface Predicate<T>{
+### Predicate<T>{
   boolean test(T t) // T를 매개변수로 받아 Boolean을 리턴하는 추상메소드 test
 }
 
 Predict<String> predicate = str -> str.equals("Hello World");
-predicate.test("Hellow World"); //true
+predicate.test("Hellow Wor
+객체 T를 매개변수로 받은 후 결과값으로 Boolean 리턴
+``` java
+@FunctionalInterface
+public interface Predicate<T>ld"); //true
 ```
 
