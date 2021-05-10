@@ -8,7 +8,8 @@
 ``` java
 class FruitBox<T>{....}
 
-class FruitBox<Apple>{      //외부의 타입이 내부 타입 매개변수로 대입, 실제로 변경되는 것은 아님 --> Type Eraser 참조
+class FruitBox<Apple>{    
+    //외부의 타입이 내부 타입 매개변수로 대입, 실제로 변경되는 것은 아님 --> Type Eraser 참조
 
     List<Apple> fruits = new ArrayList<>();
 
@@ -49,8 +50,34 @@ public static void main(Stiring[] args){
     Class.printClassName(3.14)      //java.lang.Double
 }
 ```
+## 타입매개변수의 제한 (21.05.10)
+
+### t extends T
+
+'t' 클래스는 T 자신이거나 T의 하위 클래스여야 한다(== 자식/후손 클래스)
 
 
+
+~~t super T~~   
+~~'t' 클래스는 T 자신이거나 T의 상위 클래스여야한다(== 부모 / 조상 클래스)~~
+
+### 비경계 와일드카드 <?>
+어떤 타입이든 오는 것이 가능하다
+``` java
+- List<?> <- List<A>는 가능하지만, List<Object> <- List<A>는 컴파일 오류
+
+- List<?>의 요소의 타입은 Object이다.
+
+- List<?>에는 null만 삽입할 수 있다. == List 내부 요소간 타입이 유지되지 않는 문제가 발생하는 걸 막기위해서.
+```
+
+### 와일드카드의 상한
+``` java
+? extends T의 형태 == T 자신이거나 T의 하위 클래스만 인자로 올 수 있다.
+- List<? extends T> 에서 Get 한 원소는 T 혹은 T의 하위 클래스 == 다형성에 따라 T로 읽을 수 있다.
+
+- 마찬가지로 List<? extends T> 에는 null 값만 대입할 수 있다 == List 내부 요소간 타입이 유지되는 문제가 발생한다.
+```
 
 <hr/>
 
