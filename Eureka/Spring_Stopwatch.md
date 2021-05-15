@@ -6,10 +6,10 @@
 ```
 
 ## org.springframework.util.StopWatch
-[참조](https://creamilk88.tistory.com/151) | [스프링문서](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/StopWatch.html)
+[참조](https://creamilk88.tistory.com/151) | [스프링 공식문서](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/StopWatch.html)
 
 Spring이 제공하는 StopWatch 클래스 내부 start()와 stop() 메소드를 사용 <br/>
-그 사이의 차이를 getTotalTimeMillis()로 구한다.
+메소드 간 실행시간 차이를 getTotalTimeMillis()로 구한다.
 
 ``` java
 package com.kh.spring.common.aop;
@@ -24,8 +24,8 @@ import org.springframework.util.StopWatch;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Component
-@Aspect
+@Component	//해당 class를 spring container에 bean으로 등록하는 Annotation
+@Aspect			//해당 clsss가 먼저 bean으로 등록이 되어 있어야 한다
 public class Stopwatch {
 
 	//insertMemo 메소드를 가르키는 pointcut 표현식 작성
@@ -47,5 +47,10 @@ public class Stopwatch {
 		return obj;
 	}
 }
+```
+### @Aspect를 사용하기 위해서 maven에 등록
+``` xml
+   <aop:aspectj-autoproxy />
+    <beans:bean id="bean 이름" class="등록할 class 위치" />
 ```
 [AOP 정리](https://github.com/2wonbin/TIL/blob/main/Spring/AOP.md)
