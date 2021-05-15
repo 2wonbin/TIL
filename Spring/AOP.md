@@ -15,12 +15,16 @@
 
 [참조 : [10분 테코톡] 🌕제이의 Spring AOP](https://youtu.be/Hm0w_9ngDpM)
 
+ + Aspect : Advice와 PointCut이 있는 클래스
+
 ## Advice
 
 - Before : joinpoint에서 메소드 **실행 전** 실행
+
 - AfterReturning : joinPoint에서 메소드 **성공** 후 실행
 - AfterThrowing : **예외발생**시 실행( ref)java의 catch 절)
-- After : 메소드 **실행결과와 상관없이** 무조건 실행 ( cf)java의 finally절)
+- After : 메소드 **실행결과와 상관없이** 무조건 실행 ( cf)java의 finally절) 
+
 - Around : **모든** 시점에서 실행된다.
 
 ### 💫 Around는 양방향(왕복의 느낌)이라면 After는 단방향(돌아오는 편도의 느낌). (이랄까..)
@@ -39,12 +43,13 @@
 		</aop:aspect>
 	</aop:config>
 ```
-2. Annotaition 방식 구현
+2. Annotation 방식 구현
 ``` xml
     <!-- maven 기준 servlet-context에 등록되어있어야한다. -->
 	 <aop:aspectj-autoproxy />
 ```
 ``` java
+@Slf4j			//log 출력에 필요한 Annotation					
 @Component  //필수 Annotation
 @Aspect     //필수 Annotation
 public class LoggerAspect {
@@ -84,6 +89,9 @@ public class LoggerAspect {
  ```
 
 ## AOP 구현방식
-1. 컴파일
+[참조 : 예제로 배우는 스프링 입문, 9. AOP](https://youtu.be/GeLBZ-Fe38s)
+1. 컴파일시 코드 삽입
+	- A.java ----- **AOP** -----> A.class
 2. 바이트코드
+  - A.java ---- A.class ---- **AOP** ---- Memoey
 3. 프록시
