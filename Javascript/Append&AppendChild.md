@@ -1,5 +1,5 @@
 # append()와 appendChild() 차이
-
+[[참조출처]](https://webruden.tistory.com/634)
 ## 공통점
 두 함수 모두 정해둔 부모 요소 뒤에 자식 요소를 추가한다.
 
