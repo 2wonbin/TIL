@@ -77,7 +77,7 @@ sql 구문의 where절에 위치하며, 아래의 규칙을 따른다.
 where가 원하는대로, 그러니까 and나 or을 그대로 인식한다면 trim으로 요소를 정의할 수 있다.
 
 ```xml
-<trim prefix="WHERE" prefixOverrides="AND |OR ">
+<trim prefix="WHERE" prefixOverrides="AND | OR ">
 <!-- prefix로 선언한 where 내부 prefixOverrides의 value로 지정한 요소들을 삭제한다  -->
 <!-- 추가하고 싶으면 width="추가 요소" --/>
   ...
@@ -85,3 +85,19 @@ where가 원하는대로, 그러니까 and나 or을 그대로 인식한다면 tr
 ```
 
 ## foreach
+``` xml
+<select id="selectPostIn" resultType="domain.blog.Post">
+  SELECT *
+  FROM POST P
+  WHERE ID in
+  <foreach item="item" index="index" collection="list"
+      open="(" separator="," close=")">
+        #{item}	<!-- (item[0], item[1]....)-->
+  </foreach>
+</select>
+```
+
+내부 요소들을 item의 이름으로 지정하고, 요소의 순서(위치)는 index로 지정한다.    
+받아올 collection을 명시하고 Map, Set, List등 반복 가능한 객체를 파라미터로 전달할 수 있다.   
+open에 지정한 요소로 시작하고, close에 지정한 요소로 마지막 반복 후 해당 설정 값으로 마무리 된다.   
+구분자는 seperator로 지정한다.
