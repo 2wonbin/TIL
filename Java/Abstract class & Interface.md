@@ -28,3 +28,41 @@ why?<br />
 
 [출처](https://donggyu9410.medium.com/%EC%B6%94%EC%83%81%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%9D%98-%EC%B0%A8%EC%9D%B4-b238d1ad04e5)
 
+추가 정리(21-05-25)
+
+## Default method의 특징
+1. 자식 객체에서 자유롭게 접근이 가능 == 구현 강제화 ❌
+2. 추상 메소드와 달리 몸통 부분까지 완벽하게 구현
+``` java
+public interface Foo{
+
+  default void say(){       //default는 접근제한자가 아닌 디폴트 메소드 예약어
+    System.out.println("하이");
+  }
+}
+
+```
+## 인터페이스 내부의 필드
+인터페이스 내부의 필드는 상수처럼 사용이 가능하다.( 상수라고 봐도 괜찮은가..? )
+
+``` java
+public interface Foo{
+  (public static final) String STRICT_MODE = "strict";
+}
+
+```
+
+## static method
+default method와 구조가 같고, 구현은 인터페이스 타입으로 구현한다.
+``` java
+
+public interface Foo {
+  (public) static void print(){
+    System.out.println("static!!!");
+  }
+}
+
+//다른 class
+Foo.print();  //ststic! ; 타입으로 호출할 것.
+
+```
