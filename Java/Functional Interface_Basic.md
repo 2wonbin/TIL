@@ -55,3 +55,37 @@ Predict<String> predicate = str -> str.equals("Hello World");
 predicate.test("Hellow World"); //true
 ```
 
+<hr />
+
+## 두개의 인자를 받는 함수형 인터페이스 (21-05-26)
+
+### Biconsumer<P, P>
+``` java
+Biconsumer<String, String> print = (x, y) -> System.out.println(x+ ", " + y);
+print.accept("하나", "둘"); //하나, 둘
+
+```
+### BiFunction<P, P, R>
+
+``` java
+BiFunction<String, Integer, Object> object = (name, age) -> new object(name, age);
+//생성자 메소드 참조
+BiFunction<String, Integer, Object> object = object::new;
+```
+
+### BiPredict<P, P>: boolean
+``` java
+BiPredict<String, String> strEqauls = String::equals;
+System.out.println(strEquals.test("foo","foo"));  //true
+```
+
+## 그 외
+
+### UnaryOperator<T> : 인자와 리턴 타입이 동일할 때, Functin<T, R> 의 확장된 형태의 람다식 인터페이스
+``` java
+UnaryOperator<String> str = n -> n.toUpperCase();
+str.test("abcde");  //ABCDE
+
+```
+
+함수형 인터페이스는 더 있지만 나올 때 추가로 정리하도록 한다.
