@@ -48,7 +48,6 @@ private RemoteControl rc = new RemoteControl();
  4. (다 필요없고 그냥) 생산성과 유지보수를 위해
 
 ``` java
-//
 public class SamsungTv implements Tv {
 ....
 @Autowired
@@ -57,4 +56,72 @@ public SamsungTv(RemoteControl remocon) {
   this.remocon = remocon;
   }
 }
+```
+<hr/>
+
+## 의존성 주입 방식 (21-06-10)
+[[참조출처 : Spring DI의 모든 방법 @Autowired / 생성자 주입 ]](https://leejisoo860911.tistory.com/2)
+
+### 필드 주입
+생성된 클래스에 필드로 선언한 뒤 @Autowired 어노테이션을 붙여준다.
+
+``` java
+public class MemberService{
+
+  @Autowired
+  @Qualifier("userDao")   //Bean 이름 지정 가능
+  private MemberDao memberDao;
+}
+
+```
+### setter를 통한 주입( 꼭 setter일 이유는 없음, 동일한 역할만 한다면 어떤 이름이 와도 상관없다. == method injection)
+
+``` java
+public class MemberService{
+
+  private MemberDao memberDao;
+
+  @Autowired
+  public setMemberDao(MemberDao memberDao){
+    this.memberDao = memberDao;
+  }
+}
+
+```
+### 생성자 주입
+가장 권장되는 방식, spring 4.3 버전 이후에 필드가 하나 존재한다면 @Autowired 어노테이션이 없어도 Bean으로 등록된다.
+``` java
+public class MemberService{
+
+  private MemberDao memberDao;
+
+  // @Autowired
+  public MemberService(MemberDao memberDao){
+    this.memberDao = memberDao;
+  }
+}
+```
+## Lombok 🌶 추가
+
+### @AllArgConstructor 어노테이션을 통한 DI
+``` java
+@Service
+@AllArgConstructor
+public class MemberService{
+
+  private MemberDao memberDao;
+}
+
+``` 
+
+### 불변성(Immutability) 지키기 위한 @RequiredArgConstructor 어노테이션을 통한 DI
+❗ 이 경우 반드시 필드는 **final** 로 선언되어야한다. 
+``` java
+@Service
+@RequiredArgConstructor
+public class MemberService{
+
+  private final MemberDao memberDao;
+}
+
 ```
