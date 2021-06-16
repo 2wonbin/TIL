@@ -12,8 +12,12 @@ http://localhost:8080/cPage=1&keyWord="abc"
 ```
 http://localhost:8080/board/1
 ```
+<hr/>
 
-### 1번 방식의 url에서 파라미터를 받아올 때 **@RequestParam**을 ,     2번 방식의 url에서 받아올 땐 **@PathVariable**을 사용한다.
+### 🎯1번 방식의 url에서 파라미터를 받아올 때 **@RequestParam**을 <br/>
+### 2번 방식의 url에서 받아올 땐 **@PathVariable**을 사용한다.
+
+<hr/>
 
 ## @RequestParam
 
@@ -49,5 +53,5 @@ public void boardList(@PathVariable("idx") int id){
 ```
  - 어떤 요청이든 하나 밖에 쓸 수 없다. 여러개의 요청을 받고 싶으면 **@MatrixVariable**을 사용한다
 
-[[참조출처 : @RequestParam과 @PathVariable? ]](https://2ham-s.tistory.com/290)
+[[참조출처 : @RequestParam과 @PathVariable? ]](https://2ham-s.tistory.com/290)<br/>
 [[참조출처 : @RequestParam과 @PathVariable 차이점 비교 ]](https://willbesoon.tistory.com/102)
